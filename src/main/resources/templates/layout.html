@@ -108,6 +108,11 @@
                         ></span></a></li>
                 <!--class="pull-right glyphicon glyphicon-list-alt"-->
 
+                <li sec:authorize="isAuthenticated()"
+                    th:classappend="${#httpServletRequest.getRequestURI() == '/allresults'}?'active' : ''"><a
+                        th:href="@{/allresults}">Результаты<span
+                ></span></a></li>
+
                 <li th:classappend="${#httpServletRequest.getRequestURI() == '/tutorials'}?'active' : ''"><a
                         th:href="@{/tutorials}">Туториалы<span ></span></a>
                 </li>

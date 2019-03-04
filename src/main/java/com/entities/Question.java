@@ -107,4 +107,8 @@ public class Question {
         }
         return correctOptions;
     }
+
+    public void deleteQuestion(Long id){
+        options.remove(id);
+    }
 }

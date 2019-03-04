@@ -93,4 +93,5 @@ public class QuizResult {
     public void setQuestionResponses(List<QuestionResponse> questionResponses) {
         this.questionResponses = questionResponses;
     }
+
 }

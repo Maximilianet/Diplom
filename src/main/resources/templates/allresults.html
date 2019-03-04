@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorator="layout">
+<head>
+    <title>All results</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <ol class="breadcrumb">
+        <li><a th:href="@{/managedb}">Domains</a></li>
+        <li class="active" th:text="${domain.name}">Domain</li>
+    </ol>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Дата</th>
+            <th>Счёт</th>
+            <th>domain_id</th>
+            <th>user_id</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="qs : ${questionsStats}">
+            <td th:text="${qs.question.text}"></td>
+            <td th:text="${qs.question.score}"></td>
+            <td th:text="${qs.numOptions}"></td>
+            <td th:text="${qs.numCorrectOptions}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

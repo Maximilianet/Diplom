@@ -9,6 +9,7 @@ import com.repositories.OptionRepository;
 import com.repositories.QuestionRepository;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -32,6 +33,9 @@ public class DbManagementController {
 
     @Autowired
     OptionRepository optionRepository;
+
+
+    private Question question;
 
 
     @ModelAttribute("domains")
@@ -102,6 +106,16 @@ public class DbManagementController {
         return "redirect:/managedb/domain/" + id.toString();
     }
 
+//    @RequestMapping(value = "/question/{id}/delete", method = RequestMethod.GET)
+//    public String deleteQuestion(@PathVariable Long id, Model model) {
+//        Question question = questionRepository.findOne(id);
+//        Domain domain = question.getDomain();
+//        domain.removeQuestion(question);
+//        domainRepository.save(domain);
+//        questionRepository.delete(question);
+//        return "redirect:/managedb/domain/" + domain.getId().toString();
+//    }
+
     @RequestMapping(value = "/question/{id}/delete", method = RequestMethod.GET)
     public String deleteQuestion(@PathVariable Long id, Model model) {
         Question question = questionRepository.findOne(id);
@@ -111,7 +125,6 @@ public class DbManagementController {
         questionRepository.delete(question);
         return "redirect:/managedb/domain/" + domain.getId().toString();
     }
-
 
     @RequestMapping(value = "/question/{id}", method = RequestMethod.GET)
     public String viewQuestion(@PathVariable Long id, Model model) {
