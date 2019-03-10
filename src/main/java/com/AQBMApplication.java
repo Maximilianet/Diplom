@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CatApplication {
+public class AQBMApplication {
     public static void main(String[] args) {
-        SpringApplication.run(CatApplication.class, args);
+        SpringApplication.run(AQBMApplication.class, args);
     }
 }

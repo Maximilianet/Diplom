@@ -1,1 +1,0 @@
-web: java -jar $JAVA_OPTS -Dserver.port=$PORT build/libs/cat-1.0.1-RELEASE.jar

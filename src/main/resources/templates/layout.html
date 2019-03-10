@@ -58,82 +58,130 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default sidebar" role="navigation">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target="#bs-sidebar-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" th:href="@{/}" style="margin-bottom: 10px">Адаптивное тестирование</a>
-        </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li sec:authorize="isAnonymous()"
-                    th:classappend="${#httpServletRequest.getRequestURI() == '/login'}?'active' : ''"><a
-                        th:href="@{/login}">Вход<span ></span></a></li>
-                <!--class="pull-right glyphicon glyphicon-log-in"-->
+<nav class="navbar navbar-light bg-faded" role="navigation">
+    <a class="navbar-brand" th:href="@{/}" style="margin-bottom: 10px">Адаптивное тестирование</a>
+    <ul class="nav navbar-nav">
+        <li sec:authorize="isAnonymous()"
+            th:classappend="${#httpServletRequest.getRequestURI() == '/login'}?'active' : ''"><a
+                th:href="@{/login}">Вход<span ></span></a></li>
+        <!--class="pull-right glyphicon glyphicon-log-in"-->
 
-                <li th:classappend="${#httpServletRequest.getRequestURI() == '/quiz'}?'active' : ''"><a
+        <li th:classappend="${#httpServletRequest.getRequestURI() == '/quiz'}?'active' : ''"><a
                 th:href="@{/quiz}">Тестирование<span ></span></a></li>
-                <!--class="pull-right glyphicon glyphicon-ok"-->
+        <!--class="pull-right glyphicon glyphicon-ok"-->
 
-                <li sec:authorize="isAnonymous()"
-                    th:classappend="${#httpServletRequest.getRequestURI() == '/register'}?'active' : ''"><a
-                        th:href="@{/register}">Регистрация<span></span></a>
-                </li>
-                <!--class="pull-right glyphicon glyphicon-edit"-->
+        <li sec:authorize="isAnonymous()"
+            th:classappend="${#httpServletRequest.getRequestURI() == '/register'}?'active' : ''"><a
+                th:href="@{/register}">Регистрация<span></span></a>
+        </li>
+        <!--class="pull-right glyphicon glyphicon-edit"-->
 
-                <li sec:authorize="isAuthenticated()" class="dropdown"
-                    th:classappend="${#httpServletRequest.getRequestURI() == '/changePass'}?'active' : ''">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-                            sec:authentication="name">User</span><span class="caret"></span><span
-                            ></span></a>
-                    <!--class="pull-right glyphicon glyphicon-user"-->
+        <li sec:authorize="isAuthenticated()" class="dropdown"
+            th:classappend="${#httpServletRequest.getRequestURI() == '/changePass'}?'active' : ''">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
+                    sec:authentication="name">User</span><span class="caret"></span><span
+            ></span></a>
+            <!--class="pull-right glyphicon glyphicon-user"-->
 
-                    <ul class="dropdown-menu" role="menu">
-                        <li th:classappend="${#httpServletRequest.getRequestURI() == '/changepass'}?'active' : ''"><a
-                                th:href="@{/changepass}">Сменить пароль</a></li>
-                        <li><a th:href="@{/logout}">Выход</a></li>
-                    </ul>
-                </li>
-                <li sec:authorize="hasAuthority('ADMIN')"
-                    th:classappend="${#httpServletRequest.getRequestURI() == '/managedb'}?'active' : ''"><a
-                        th:href="@{/managedb}">БД<span
-                        ></span></a></li>
-                <!--class="pull-right glyphicon glyphicon-list-alt"-->
+            <ul class="dropdown-menu" role="menu">
+                <li th:classappend="${#httpServletRequest.getRequestURI() == '/changepass'}?'active' : ''"><a
+                        th:href="@{/changepass}">Сменить пароль</a></li>
+                <li><a th:href="@{/logout}">Выход</a></li>
+            </ul>
+        </li>
+        <li sec:authorize="hasAuthority('ADMIN')"
+            th:classappend="${#httpServletRequest.getRequestURI() == '/managedb'}?'active' : ''"><a
+                th:href="@{/managedb}">БД<span
+        ></span></a></li>
+        <!--class="pull-right glyphicon glyphicon-list-alt"-->
 
-                <li sec:authorize="isAuthenticated()"
-                    th:classappend="${#httpServletRequest.getRequestURI() == '/allresults'}?'active' : ''"><a
-                        th:href="@{/allresults}">Результаты<span
-                ></span></a></li>
+        <li sec:authorize="isAuthenticated()"
+            th:classappend="${#httpServletRequest.getRequestURI() == '/allresults'}?'active' : ''"><a
+                th:href="@{/allresults}">Результаты<span
+        ></span></a></li>
 
-                <li th:classappend="${#httpServletRequest.getRequestURI() == '/tutorials'}?'active' : ''"><a
-                        th:href="@{/tutorials}">Туториалы<span ></span></a>
-                </li>
-                <!--class="pull-right glyphicon glyphicon-education"-->
+        <li th:classappend="${#httpServletRequest.getRequestURI() == '/tutorials'}?'active' : ''"><a
+                th:href="@{/tutorials}">Туториалы<span ></span></a>
+        </li>
+    </ul>
+</nav>
 
+<!--<nav class="navbar navbar-default sidebar" role="navigation">-->
+    <!--<div class="container-fluid">-->
+        <!--&lt;!&ndash; Brand and toggle get grouped for better mobile display &ndash;&gt;-->
+        <!--<div class="navbar-header">-->
+            <!--<button type="button" class="navbar-toggle" data-toggle="collapse"-->
+                    <!--data-target="#bs-sidebar-navbar-collapse-1">-->
+                <!--<span class="sr-only">Toggle navigation</span>-->
+                <!--<span class="icon-bar"></span>-->
+                <!--<span class="icon-bar"></span>-->
+                <!--<span class="icon-bar"></span>-->
+            <!--</button>-->
+            <!--<a class="navbar-brand" th:href="@{/}" style="margin-bottom: 10px">Адаптивное тестирование</a>-->
+        <!--</div>-->
+        <!--&lt;!&ndash; Collect the nav links, forms, and other content for toggling &ndash;&gt;-->
+        <!--<div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">-->
+            <!--<ul class="nav navbar-nav">-->
+                <!--<li sec:authorize="isAnonymous()"-->
+                    <!--th:classappend="${#httpServletRequest.getRequestURI() == '/login'}?'active' : ''"><a-->
+                        <!--th:href="@{/login}">Вход<span ></span></a></li>-->
+                <!--&lt;!&ndash;class="pull-right glyphicon glyphicon-log-in"&ndash;&gt;-->
 
-                <!--<li class="dropdown"-->
-                    <!--th:classappend="${#httpServletRequest.getRequestURI() == '/about' || #httpServletRequest.getRequestURI() == '/contact'}?'active' : ''">-->
-                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">О сайте<span class="caret"></span><span-->
-                            <!--class="pull-right glyphicon glyphicon-info-sign"></span></a>-->
+                <!--<li th:classappend="${#httpServletRequest.getRequestURI() == '/quiz'}?'active' : ''"><a-->
+                <!--th:href="@{/quiz}">Тестирование<span ></span></a></li>-->
+                <!--&lt;!&ndash;class="pull-right glyphicon glyphicon-ok"&ndash;&gt;-->
+
+                <!--<li sec:authorize="isAnonymous()"-->
+                    <!--th:classappend="${#httpServletRequest.getRequestURI() == '/register'}?'active' : ''"><a-->
+                        <!--th:href="@{/register}">Регистрация<span></span></a>-->
+                <!--</li>-->
+                <!--&lt;!&ndash;class="pull-right glyphicon glyphicon-edit"&ndash;&gt;-->
+
+                <!--<li sec:authorize="isAuthenticated()" class="dropdown"-->
+                    <!--th:classappend="${#httpServletRequest.getRequestURI() == '/changePass'}?'active' : ''">-->
+                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span-->
+                            <!--sec:authentication="name">User</span><span class="caret"></span><span-->
+                            <!--&gt;</span></a>-->
+                    <!--&lt;!&ndash;class="pull-right glyphicon glyphicon-user"&ndash;&gt;-->
+
                     <!--<ul class="dropdown-menu" role="menu">-->
-                        <!--<li th:classappend="${#httpServletRequest.getRequestURI() == '/about'}?'active' : ''"><a-->
-                                <!--th:href="@{/about}">О сайте</a></li>-->
-                        <!--<li th:classappend="${#httpServletRequest.getRequestURI() == '/contact'}?'active' : ''"><a-->
-                                <!--th:href="@{/contact}">Контакты</a></li>-->
+                        <!--<li th:classappend="${#httpServletRequest.getRequestURI() == '/changepass'}?'active' : ''"><a-->
+                                <!--th:href="@{/changepass}">Сменить пароль</a></li>-->
+                        <!--<li><a th:href="@{/logout}">Выход</a></li>-->
                     <!--</ul>-->
                 <!--</li>-->
-            </ul>
-        </div>
-    </div>
-</nav>
+                <!--<li sec:authorize="hasAuthority('ADMIN')"-->
+                    <!--th:classappend="${#httpServletRequest.getRequestURI() == '/managedb'}?'active' : ''"><a-->
+                        <!--th:href="@{/managedb}">БД<span-->
+                        <!--&gt;</span></a></li>-->
+                <!--&lt;!&ndash;class="pull-right glyphicon glyphicon-list-alt"&ndash;&gt;-->
+
+                <!--<li sec:authorize="isAuthenticated()"-->
+                    <!--th:classappend="${#httpServletRequest.getRequestURI() == '/allresults'}?'active' : ''"><a-->
+                        <!--th:href="@{/allresults}">Результаты<span-->
+                <!--&gt;</span></a></li>-->
+
+                <!--<li th:classappend="${#httpServletRequest.getRequestURI() == '/tutorials'}?'active' : ''"><a-->
+                        <!--th:href="@{/tutorials}">Туториалы<span ></span></a>-->
+                <!--</li>-->
+                <!--&lt;!&ndash;class="pull-right glyphicon glyphicon-education"&ndash;&gt;-->
+
+
+                <!--&lt;!&ndash;<li class="dropdown"&ndash;&gt;-->
+                    <!--&lt;!&ndash;th:classappend="${#httpServletRequest.getRequestURI() == '/about' || #httpServletRequest.getRequestURI() == '/contact'}?'active' : ''">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<a href="#" class="dropdown-toggle" data-toggle="dropdown">О сайте<span class="caret"></span><span&ndash;&gt;-->
+                            <!--&lt;!&ndash;class="pull-right glyphicon glyphicon-info-sign"></span></a>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<ul class="dropdown-menu" role="menu">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<li th:classappend="${#httpServletRequest.getRequestURI() == '/about'}?'active' : ''"><a&ndash;&gt;-->
+                                <!--&lt;!&ndash;th:href="@{/about}">О сайте</a></li>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<li th:classappend="${#httpServletRequest.getRequestURI() == '/contact'}?'active' : ''"><a&ndash;&gt;-->
+                                <!--&lt;!&ndash;th:href="@{/contact}">Контакты</a></li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+                <!--&lt;!&ndash;</li>&ndash;&gt;-->
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</nav>-->
 
 <div class="main container-fluid">
     <div class="content" layout:fragment="content">

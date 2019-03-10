@@ -8,6 +8,8 @@ import com.repositories.DomainRepository;
 import com.repositories.OptionRepository;
 import com.repositories.QuestionRepository;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -25,6 +27,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/managedb")
 public class DbManagementController {
+    @NotFound(action = NotFoundAction.IGNORE)
+
     @Autowired
     DomainRepository domainRepository;
 

@@ -13,18 +13,17 @@
 </head>
 <body>
 <div layout:fragment="content">
-    <div class="jumbotron">
-        <h1>Адаптивное тестирование</h1>
-    </div>
+    <!--<div class="jumbotron">-->
+        <!--<h1>Адаптивное тестирование</h1>-->
+    <!--</div>-->
 
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-md-3 col-md-offset-4">
             <div class="well">
-                <h3>H3-H3-H3-H3-H3-H3-H3-H3</h3>
-                <p>Вход</p>
-                <p><b>Удачи!</b></p>
-
-                <a th:href="@{/quiz}" class="btn btn-info" role="button">Нужен аккаунт для прохождения теста</a>
+                <h3>Для того чтобы пройти тест, необходимо зарегистрироваться</h3>
+                <p style="text-align: center">Вход</p>
+                <p style="text-align: center"><b>Удачи!</b></p>
+                <a th:href="@{/quiz}" type="button" class="btn btn-danger" style="width: 100%">Войти в аккаунт</a>
             </div>
         </div>
     </div>
