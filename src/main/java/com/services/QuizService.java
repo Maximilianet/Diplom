@@ -21,8 +21,6 @@ import java.util.Random;
 @Service
 
 public class QuizService {
-    @NotFound(action = NotFoundAction.IGNORE)
-
     @Autowired
     DomainRepository domainRepository;
 
@@ -176,5 +174,7 @@ public class QuizService {
 
         System.out.print("Current Error: ");
         System.out.println(calcError(quiz));
+
+        System.out.println("___________________________________ ");
     }
 }

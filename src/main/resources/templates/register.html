@@ -25,23 +25,22 @@
     <section id="content">
         <form th:action="@{/register}" method="post" th:object="${userRegistrationDTO}">
             <ul th:if="${#fields.hasGlobalErrors()}">
-                <li th:each="err : ${#fields.globalErrors()}" th:text="${err}">Input is incorrect</li>
+                <li th:each="err : ${#fields.globalErrors()}" th:text="${err}">Неверный ввод</li>
             </ul>
-            <h1>Hello stranger! :)</h1>
+            <h1>Регистрация</h1>
             <div>
-                <input type="text" th:field="*{username}" placeholder="Username" required="required" id="username"
+                <input type="text" th:field="*{username}" placeholder="Логин" required="required" id="username"
                        autofocus="true"/>
-                <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</div>
+                <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Ошибка логина</div>
             </div>
             <div>
-                <input type="password" th:field="*{password}" placeholder="Password" required="required" id="password"/>
-                <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</div>
+                <input type="password" th:field="*{password}" placeholder="Пароль" required="required" id="password"/>
+                <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Ошибка пароля</div>
             </div>
             <div>
-                <input type="password" th:field="*{password_confirm}" placeholder="Password (confirm)"
+                <input type="password" th:field="*{password_confirm}" placeholder="Подтверждение пароля"
                        required="required" id="password_confirm"/>
-                <div th:if="${#fields.hasErrors('password_confirm')}" th:errors="*{password_confirm}">Password Confirm
-                    Error
+                <div th:if="${#fields.hasErrors('password_confirm')}" th:errors="*{password_confirm}">Ошибка подтверждения пароля
                 </div>
             </div>
             <div>
