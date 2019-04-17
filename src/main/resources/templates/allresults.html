@@ -8,30 +8,31 @@
 <body>
 
 <div layout:fragment="content">
-    <ol class="breadcrumb">
-        <li><a th:href="@{/managedb}">Domains</a></li>
-        <li class="active" th:text="${domain.name}">Domain</li>
-    </ol>
 
     <table class="table">
         <thead>
         <tr>
-            <th>Дата</th>
-            <th>Счёт</th>
-            <th>domain_id</th>
-            <th>user_id</th>
+            <th>Вопрос</th>
+            <th>Сложность</th>
+            <th>Выбор из</th>
+            <th>Кол-во правильных ответов</th>
+            <th>Действия</th>
         </tr>
         </thead>
         <tbody>
-
         <tr th:each="qs : ${questionsStats}">
             <td th:text="${qs.question.text}"></td>
             <td th:text="${qs.question.score}"></td>
             <td th:text="${qs.numOptions}"></td>
             <td th:text="${qs.numCorrectOptions}"></td>
+            <td>
+                <a class="btn btn-primary" th:href="@{/managedb/question/{id}(id=${qs.question.id})}">Отредактировать</a>
+                <a class="btn btn-danger" th:href="@{/managedb/question/{id}/delete(id=${qs.question.id})}">Удалить</a>
+            </td>
         </tr>
         </tbody>
     </table>
+
 </div>
 </body>
 </html>

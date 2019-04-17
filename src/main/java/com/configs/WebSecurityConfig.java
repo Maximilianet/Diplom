@@ -50,7 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 String providedPassword = (String) authentication.getCredentials();
                 AuthedUser authedUser = userService.findAndAuthenticateUser(username, providedPassword);
                 if (authedUser == null) {
-                    throw new BadCredentialsException("Username/Password does not match for " + authentication.getPrincipal());
+                    throw new BadCredentialsException("Логин/Пароль не подходит для " + authentication.getPrincipal());
                 }
 
                 return new UsernamePasswordAuthenticationToken(authedUser, null, authedUser.getAuthorities());

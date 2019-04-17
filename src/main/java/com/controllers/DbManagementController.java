@@ -38,10 +38,6 @@ public class DbManagementController {
     @Autowired
     OptionRepository optionRepository;
 
-
-    private Question question;
-
-
     @ModelAttribute("domains")
     public List<Domain> getDomains() {
         return (List<Domain>) domainRepository.findAll();
