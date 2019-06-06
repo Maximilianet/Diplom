@@ -65,20 +65,19 @@ public class QuizController {
 
     @RequestMapping(value = "/question", method = RequestMethod.GET)
     public String displayChoice(@ModelAttribute Quiz quiz, SessionStatus sessionStatus) {
-        //if you get on this page directly, without starting a quiz first
+        //Если попадают прямо на эту страницу, без начала теста
         if (quiz.getDomain() == null || quiz.getCompleted()) {
             sessionStatus.setComplete();
             return "redirect:/quiz";
         }
 
-        //replace it only if it's not already set (to prevent using page refresh in order to get a new one)
         Question currentQuestion = quiz.getCurrentQuestion();
         if (currentQuestion == null ) {
             currentQuestion = quizService.chooseNextQuestion(quiz);
         }
         quiz.setCurrentQuestion(currentQuestion);
 
-        //if there are no more questions available, end the quiz
+        //Если больше нет доступных вопросов - тест заканчивается
         if (currentQuestion == null) {
             quiz.setCompleted(true);
             return "redirect:/quiz/result";
@@ -106,7 +105,7 @@ public class QuizController {
 
         Calendar calendar = Calendar.getInstance();
         Date now = calendar.getTime();
-        //If time limit was reached, we don't take in account the answers
+        //Если временной лимит был превышен, то ответ не засчитывается
         if (quiz.getQuestionTimeLimit().after(now)) {
             for (Long chosenId : quiz.getCurrentSelectedAnswers()) {
                 for (Option option : quiz.getCurrentQuestion().getOptions()) {
@@ -124,7 +123,6 @@ public class QuizController {
         quizService.debugLastResponse(quiz);
 
 
-        //prepare to choose a new question
         quiz.setCurrentQuestion(null);
 
         return this.displayChoice(quiz, sessionStatus);

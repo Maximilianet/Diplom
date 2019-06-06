@@ -72,7 +72,7 @@ public class QuizService {
         return questionScore;
     }
 
-    //the first NUM_SETUP_QUESTIONS responses are used for calibration, and are ignored in the scoring
+    //Первые NUM_SETUP_QUESTIONS используются для калибровки теста и игнорируются в подсчете
     public List<QuestionResponse> getScoreResponses(Quiz quiz) {
         List<QuestionResponse> responses = quiz.getResponses();
         if (responses.size() < QuizConfig.NUM_SETUP_QUESTIONS) {
@@ -97,7 +97,7 @@ public class QuizService {
     }
 
     public Double calcError(Quiz quiz) {
-        //Standard deviation
+        //Среднеквадратическое отклонение
         Double mean = calcMean(quiz);
         Double devSum = 0.0;
         List<QuestionResponse> responses = getScoreResponses(quiz);
@@ -112,7 +112,7 @@ public class QuizService {
         }
         Double stdDev = Math.sqrt(devSum / responses.size());
 
-        //Standard error
+        //Стандартная ошибка
         return stdDev / Math.sqrt(responses.size());
     }
 
@@ -146,33 +146,33 @@ public class QuizService {
         List<QuestionResponse> responses = quiz.getResponses();
         QuestionResponse lastResponse = responses.get(quiz.getResponses().size() - 1);
 
-        System.out.print("Question ID: ");
+        System.out.print("ID вопроса: ");
         System.out.println(lastResponse.getQuestion().getId());
 
-        System.out.print("Score: ");
+        System.out.print("Балл: ");
         System.out.println(lastResponse.getQuestion().getScore());
 
-        System.out.print("Corect Answers IDs:");
+        System.out.print("ID верного ответа:");
         for (Option option : lastResponse.getQuestion().getCorrectOptions()) {
             System.out.print(" ");
             System.out.print(option.getId());
         }
         System.out.println();
 
-        System.out.print("Selected Answers IDs:");
+        System.out.print("ID выбранного ответа:");
         for (Option option : lastResponse.getSelectedOptions()) {
             System.out.print(" ");
             System.out.print(option.getId());
         }
         System.out.println();
 
-        System.out.print("Is Correct: ");
+        System.out.print("Верно ответил: ");
         System.out.println(lastResponse.isCorrect());
 
-        System.out.print("Current Score: ");
+        System.out.print("Текущий балл: ");
         System.out.println(calcMean(quiz));
 
-        System.out.print("Current Error: ");
+        System.out.print("Текущая ошибка: ");
         System.out.println(calcError(quiz));
 
         System.out.println("___________________________________ ");
